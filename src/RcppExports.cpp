@@ -5,19 +5,22 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _dsmisc_rcpp_hello_world() {
+// graphs_find_subgraphs
+IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int verbose);
+RcppExport SEXP _dsmisc_graphs_find_subgraphs(SEXP id_1SEXP, SEXP id_2SEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< IntegerVector >::type id_1(id_1SEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type id_2(id_2SEXP);
+    Rcpp::traits::input_parameter< int >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(graphs_find_subgraphs(id_1, id_2, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_dsmisc_rcpp_hello_world", (DL_FUNC) &_dsmisc_rcpp_hello_world, 0},
+    {"_dsmisc_graphs_find_subgraphs", (DL_FUNC) &_dsmisc_graphs_find_subgraphs, 3},
     {NULL, NULL, 0}
 };
 

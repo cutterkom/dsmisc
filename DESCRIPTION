@@ -1,14 +1,21 @@
 Package: dsmisc
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
-Version: 1.0
+Title: Data Science Box of Pandora Miscellaneous
+Version: 0.1
 Date: 2019-11-16
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full
-          sentences.
+Description: Tool collection for common and not so common data science use cases. This includes 
+    custom made algorithms for data management as well as value calculations that are hard to find 
+    elsewhere because of their specificnes but would be a waste to get lost nonetheless. 
+Authors@R: c(
+    person(
+      "Peter", "Meissner",
+      email = "retep.meissner@gmail.com",
+      role = c("aut", "cre")
+    )
+  )
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.2)
 LinkingTo: Rcpp
 RoxygenNote: 6.1.1
 Encoding: UTF-8
+SystemRequirements: C++11
