@@ -32,7 +32,7 @@ struct Node {
 //' @param id_1 vector of integers indicating ids 
 //' @param id_2 vector of integers indicating ids 
 //' @param verbose in integer indicating the amount of verbosity; good for long running tasks or to 
-//'   get more infoamtion about the workings of the algorithm; currently accepted values: 0, 1, 2
+//'   get more information about the workings of the algorithm; currently accepted values: 0, 1, 2
 //' 
 //' @return An integer vector with subgraph ids such that each distinct subgraph - i.e. all 
 //'   nodes are reachable within the graph and no node outside the subgraph is reachable - 
