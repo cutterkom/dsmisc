@@ -20,4 +20,5 @@ RoxygenNote: 6.1.1
 Encoding: UTF-8
 SystemRequirements: C++11
 Suggests: 
-    covr
+    covr,
+    testthat
