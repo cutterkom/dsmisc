@@ -24,11 +24,11 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 4, *lines of test code:* 0
+*lines of R code:* 4, *lines of test code:* 3
 
 **Version**
 
-0.1 ( 2019-11-17 12:54:21 )
+0.1.2 ( 2019-11-21 15:29:18 )
 
 **Description**
 
@@ -39,8 +39,7 @@ specificity but would be a waste to get lost nonetheless.
 
 **License**
 
-GPL (\>= 2) <br>Peter Meissner \[aut,
-cre\]
+GPL (\>= 2) <br>Peter Meissner \[aut, cre\]
 
 **Citation**
 
@@ -49,7 +48,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2019). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.1.
+Meissner P (2019). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.1.2.
 ```
 
 **BibTex for citing**
@@ -62,7 +61,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2019},
-      note = {R package version 0.1},
+      note = {R package version 0.1.2},
     }
 
 **Installation**

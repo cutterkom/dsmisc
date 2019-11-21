@@ -24,7 +24,7 @@
 #'
 #' @export
 #' 
-graphs_find_subgraphs <- function(id_1, id_2, verbose = 2L) {
+graphs_find_subgraphs <- function(id_1, id_2, verbose = 1L) {
     .Call('_dsmisc_graphs_find_subgraphs', PACKAGE = 'dsmisc', id_1, id_2, verbose)
 }
 

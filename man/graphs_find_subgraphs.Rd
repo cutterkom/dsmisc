@@ -4,7 +4,7 @@
 \alias{graphs_find_subgraphs}
 \title{Finding and indexing subgraphs in undirected graph}
 \usage{
-graphs_find_subgraphs(id_1, id_2, verbose = 2L)
+graphs_find_subgraphs(id_1, id_2, verbose = 1L)
 }
 \arguments{
 \item{id_1}{vector of integers indicating ids}

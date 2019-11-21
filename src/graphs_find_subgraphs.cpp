@@ -16,7 +16,6 @@ struct Node {
   set<int> linked_nodes;
   set<int> vector_positions;
   bool visited = false;
-  int subgraph_id = 0;
 };
 
 
@@ -46,7 +45,7 @@ struct Node {
 //' @export
 //' 
 // [[Rcpp::export]]
-IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int verbose = 2) {
+IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int verbose = 1) {
   
   // check inputs 
   if ( id_2.length() != id_1.length() ){
@@ -64,7 +63,7 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
   map<int, Node> map_nodes;
   
   // build dictionary of all nodes 
-  if (verbose >= 1 ){ Rcout << "\nBuilding dictionary.\n"; }
+  if (verbose >= 1 ){ Rcout << "\n\nBuilding dictionary.\n"; }
   for ( int i = 0; i < sub_graph_id.length(); i++ ) {
     
     if ( (i) % 10000 == 0 ) {
@@ -81,7 +80,7 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
   
   
   // add linked node ids and node positions to mapping
-  if (verbose >= 1 ){ Rcout << "\nCollecting nodes and edges.\n"; }
+  if (verbose >= 1 ){ Rcout << "\n\nCollecting nodes and edges.\n"; }
   for ( int i = 0; i < sub_graph_id.length(); i++ ) {
 
     if ( (i) % 10000 == 0 ) {
@@ -101,55 +100,89 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
 
   
   // loop over all nodes and assign groups 
-  if (verbose >= 1 ){ Rcout << "\nSearching for subgraphs.\n"; }
+  if (verbose >= 1 ){ Rcout << "\n\nSearching for subgraphs.\n"; }
   int i = 0; 
   map<int, Node>::iterator it = map_nodes.begin();
   
   while (it != map_nodes.end()) {
     
     // key from current mapping 
-    int key = it->first;
+    int start_node_key = it->first;
     
     // value from current mapping
-    Node value = it->second;
+    Node start_node_value = it->second;
     
     
     // logging and checking for user interupt
     if ( (i) % 10000 == 0 ) {
       Rcpp::checkUserInterrupt();
-      if (verbose >= 1 ){ Rcout << "\r" << i << "                     "; }
+      if (verbose == 1 ){ 
+        Rcout << "\r" << i << "                     "; 
+      } else if ( verbose > 1 ){
+        Rcout << "" << i << "                     \n\n"; 
+      }
     }
 
     
     // logging     
-    if (verbose >= 1 ){ Rcout << "node " << key << " - vis " << value.visited << " - subid " << graph_max_id ;}
+    if ( (verbose >= 2) & !start_node_value.visited ) { 
+      Rcout << 
+        "\nnode "   << start_node_key << 
+        " - vis "   << start_node_value.visited 
+      ;
+      if ( false == start_node_value.visited ){
+        Rcout << " - sub_graph_id " << graph_max_id;
+      }
+    }
     
     // search through unprocessed nodes
-    if ( value.visited == false ){
+    if ( start_node_value.visited == false ){
 
-      if ( verbose >= 2){ Rcout << " processing ";}
-      
-      //
+      // bookkeeping visited nodes for this subgraph
       set<int> visited;
-      vector<int> stack;
+      visited.insert(start_node_key);
       
-      for ( auto node_id : value.linked_nodes ) {
-        stack.push_back(node_id);
+      // bookkeeping still to be visited nodes for this subgraph
+      vector<int> stack;
+      for ( auto linked_node_id : start_node_value.linked_nodes ) {
+        stack.push_back(linked_node_id);
       }
       
-
+      
+      // log
+      if ( verbose >= 2 ){ Rcout << "\n " << start_node_key; }
+      
+      
       // go through all children
       while ( !stack.empty() ) {
         
-        int node_id = stack.back();
+        // get item ,
+        // remove it from stack and 
+        int stack_current_node_id = stack.back();
         stack.pop_back();
-        map_nodes.find(node_id)->second.visited = true;
         
-        for ( int pos : map_nodes.find(node_id)->second.vector_positions ){
+        // log
+        if ( verbose >= 2 ){ Rcout << ", " << stack_current_node_id; }
+        
+        
+        // process current node positions
+        for ( int pos : map_nodes.find(stack_current_node_id)->second.vector_positions ){
           sub_graph_id[pos] = graph_max_id;
         }
         
-        if (verbose >= 2 ){ Rcout << node_id << " "; }
+        // mark current node as visited
+        map_nodes.find(stack_current_node_id)->second.visited = true;
+        visited.insert(stack_current_node_id);
+        
+        
+        // add linked nodes to stack (if not already visited)
+        set<int> linked_nodes = map_nodes.find(stack_current_node_id)->second.linked_nodes;
+        for ( int nid : linked_nodes ){
+          if ( visited.find(nid) == visited.end() ){
+            stack.push_back(nid);
+          }
+        }
+        
       }
       
       // step up graph counter
@@ -159,7 +192,6 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
       // go to next node
     }
     
-    if (verbose >= 1 ){ Rcout << "\n"; }
     // update indices and iterators
     i++;
     it++;
@@ -167,7 +199,7 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
   }
   
   // ensure to move to next line for next printing
-  if (verbose >= 1 ){ Rcout << "\n"; }
+  if (verbose >= 1 ){ Rcout << "\n\n"; }
   
   
   return sub_graph_id;
