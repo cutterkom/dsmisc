@@ -24,11 +24,11 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 4, *lines of test code:* 3
+*lines of R code:* 4, *lines of test code:* 24
 
 **Version**
 
-0.1.2 ( 2019-11-21 15:29:18 )
+0.1.3 ( 2019-11-22 21:10:15 )
 
 **Description**
 
@@ -39,7 +39,8 @@ specificity but would be a waste to get lost nonetheless.
 
 **License**
 
-GPL (\>= 2) <br>Peter Meissner \[aut, cre\]
+GPL (\>= 2) <br>Peter Meissner \[aut,
+cre\]
 
 **Citation**
 
@@ -48,7 +49,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2019). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.1.2.
+Meissner P (2019). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.1.3.
 ```
 
 **BibTex for citing**
@@ -61,7 +62,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2019},
-      note = {R package version 0.1.2},
+      note = {R package version 0.1.3},
     }
 
 **Installation**
@@ -80,8 +81,81 @@ install.packages("dsmisc")
 
 <!-- ``` -->
 
-**Usage**
+## Usage
 
 *starting up …*
 
-    library("dsmisc")
+``` r
+library("dsmisc")
+```
+
+### Graph computations
+
+*find isolated graphs / networks*
+
+A graph described by an edgelist with two distinct subgraphs.
+
+``` r
+edges_df <- 
+  data.frame(
+    node_1 = c(1:5, 10:8),
+    node_2 = c(2:6, 7,7,7)
+  )
+
+edges_df
+```
+
+    ##   node_1 node_2
+    ## 1      1      2
+    ## 2      2      3
+    ## 3      3      4
+    ## 4      4      5
+    ## 5      5      6
+    ## 6     10      7
+    ## 7      9      7
+    ## 8      8      7
+
+Finding subgraphs and grouping them together via subgraph id.
+
+``` r
+edges_df$subgraph_id <- 
+  graphs_find_subgraphs(
+    id_1    = edges_df$node_1,
+    id_2    = edges_df$node_2,
+    verbose = 0
+  )
+
+edges_df
+```
+
+    ##   node_1 node_2 subgraph_id
+    ## 1      1      2           1
+    ## 2      2      3           1
+    ## 3      3      4           1
+    ## 4      4      5           1
+    ## 5      5      6           1
+    ## 6     10      7           2
+    ## 7      9      7           2
+    ## 8      8      7           2
+
+*speedtest for large graph*
+
+``` r
+edges_df <- 
+   data.frame(
+    node_1 = sample(x = 1:10000, size = 10^5, replace = TRUE),
+    node_2 = sample(x = 1:10000, size = 10^5, replace = TRUE)
+  )
+
+system.time({
+  edges_df$subgraph_id <- 
+    graphs_find_subgraphs(
+      id_1    = edges_df$node_1,
+      id_2    = edges_df$node_2,
+      verbose = 0
+    )
+})
+```
+
+    ##    user  system elapsed 
+    ##    1.27    0.02    1.28
