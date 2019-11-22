@@ -100,6 +100,11 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
 
   
   // loop over all nodes and assign groups 
+  // Algorithm: 
+  //  - go through all nodes
+  //  - if not processed before  -> use as starting point for a subgraph walk
+  //    * algorithm described in: https://www.programiz.com/dsa/graph-dfs
+  //  - if processed already -> skip
   if (verbose >= 1 ){ Rcout << "\n\nSearching for subgraphs.\n"; }
   int i = 0; 
   map<int, Node>::iterator it = map_nodes.begin();
@@ -135,15 +140,15 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
       }
     }
     
-    // search through unprocessed nodes
+    // do subgraph walk
     if ( start_node_value.visited == false ){
 
       // bookkeeping visited nodes for this subgraph
       set<int> visited;
-      visited.insert(start_node_key);
       
       // bookkeeping still to be visited nodes for this subgraph
       vector<int> stack;
+      stack.push_back(start_node_key);
       for ( auto linked_node_id : start_node_value.linked_nodes ) {
         stack.push_back(linked_node_id);
       }
@@ -165,7 +170,7 @@ IntegerVector graphs_find_subgraphs(IntegerVector id_1, IntegerVector id_2, int 
         if ( verbose >= 2 ){ Rcout << ", " << stack_current_node_id; }
         
         
-        // process current node positions
+        // PAYLOAD: [assign subgraph id to vector elements]
         for ( int pos : map_nodes.find(stack_current_node_id)->second.vector_positions ){
           sub_graph_id[pos] = graph_max_id;
         }

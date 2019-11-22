@@ -171,9 +171,72 @@ cat("\n```\n")
 **Usage**
 
 *starting up ...*
-```{r, results='asis', echo=FALSE}
-cat("```\n")
-cat("library(\"",package_name,"\")", sep = "")
-cat("\n```\n")
+```{r}
+library("dsmisc")
 ```
 
+*small helper function*
+```{r}
+is_installed <- 
+  function(pkg){ 
+    pkg %in% rownames(installed.packages()) 
+  }
+```
+
+
+*find isolated graphs / networks*
+
+```{r}
+edges_df <- 
+  data.frame(
+    node_1 = c(0:5, 10:8),
+    node_2 = c(1:6, 7,7,7)
+  )
+
+edges_df
+```
+
+
+```{r}
+if ( is_installed("networkD3") ){
+  networkD3::simpleNetwork(edges_df)
+}
+```
+
+```{r}
+edges_df$subgraph_id <- 
+  graphs_find_subgraphs(
+    id_1    = edges_df$node_1,
+    id_2    = edges_df$node_2,
+    verbose = 0
+  )
+
+edges_df
+```
+```{r}
+nodes_df <- 
+  unique(
+    data.frame(
+      node_id  = c(edges_df$node_1, edges_df$node_2),
+      group_id = c(edges_df$subgraph_id, edges_df$subgraph_id) * 2
+    )
+  )
+
+nodes_df <- 
+  nodes_df[order(nodes_df$node_id),]
+
+nodes_df
+```
+
+```{r}
+if ( is_installed("networkD3") ){
+  networkD3::forceNetwork(
+    Links       = edges_df, 
+    Nodes       = nodes_df,
+    NodeID      = "node_id",
+    Group       = "group_id",
+    colourScale = networkD3::JS("d3.scaleOrdinal(d3.schemeCategory10);"),
+    opacity     = 1
+  )
+}
+```
