@@ -24,11 +24,11 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 4, *lines of test code:* 24
+*lines of R code:* 16, *lines of test code:* 24
 
 **Version**
 
-0.1.3 ( 2019-11-22 21:10:15 )
+0.2.0 ( 2020-01-09 21:14:00 )
 
 **Description**
 
@@ -49,7 +49,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2019). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.1.3.
+Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.2.0.
 ```
 
 **BibTex for citing**
@@ -61,8 +61,8 @@ toBibtex(citation("dsmisc"))
     @Manual{,
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
-      year = {2019},
-      note = {R package version 0.1.3},
+      year = {2020},
+      note = {R package version 0.2.0},
     }
 
 **Installation**
@@ -158,4 +158,35 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    1.27    0.02    1.28
+    ##    1.44    0.02    1.45
+
+### String Functions
+
+Stringr/stringi is cool but … can it do this?
+
+**Extract specific RegEx groups**
+
+``` r
+strings <- paste(LETTERS, seq_along(LETTERS), sep = "_")
+
+# whole pattern
+str_group_extract(strings, "([\\w])_(\\d+)")
+```
+
+    ##  [1] "A_1"  "B_2"  "C_3"  "D_4"  "E_5"  "F_6"  "G_7"  "H_8"  "I_9"  "J_10" "K_11" "L_12" "M_13" "N_14" "O_15"
+    ## [16] "P_16" "Q_17" "R_18" "S_19" "T_20" "U_21" "V_22" "W_23" "X_24" "Y_25" "Z_26"
+
+``` r
+# first group
+str_group_extract(strings, "([\\w])_(\\d+)", 1)
+```
+
+    ##  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
+
+``` r
+# second group
+str_group_extract(strings, "([\\w])_(\\d+)", 2)
+```
+
+    ##  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13" "14" "15" "16" "17" "18" "19" "20" "21"
+    ## [22] "22" "23" "24" "25" "26"

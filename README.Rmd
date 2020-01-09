@@ -234,3 +234,24 @@ system.time({
 })
 ```
 
+
+
+### String Functions
+
+{stringr} / {stringi} packages are cool ... but can they do this? 
+
+
+**Extract specific RegEx groups**
+```{r}
+strings <- paste(LETTERS, seq_along(LETTERS), sep = "_")
+
+# whole pattern
+str_group_extract(strings, "([\\w])_(\\d+)")
+
+# first group
+str_group_extract(strings, "([\\w])_(\\d+)", 1)
+
+# second group
+str_group_extract(strings, "([\\w])_(\\d+)", 2)
+```
+
