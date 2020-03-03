@@ -236,6 +236,18 @@ system.time({
 
 
 
+### Stats Functions
+
+**Calculating the modus from a collection of values**
+
+```{r}
+stats_modus(1:100)
+
+```
+
+
+
+
 ### String Functions
 
 {stringr} / {stringi} packages are cool ... but can they do this? 

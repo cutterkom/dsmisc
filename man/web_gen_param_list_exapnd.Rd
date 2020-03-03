@@ -7,11 +7,11 @@
 web_gen_param_list_exapnd(..., sep_1 = "=", sep_2 = "&")
 }
 \arguments{
-\item{...}{}
+\item{...}{multiple vectors passed on as named arguments or a single list or a data.frame}
 
-\item{sep_1}{se}
+\item{sep_1}{first separator to use between key and value}
 
-\item{sep_2}{}
+\item{sep_2}{second separator to use between key-value pairs}
 }
 \description{
 Generate an url parameter combination from sets of parameter values.

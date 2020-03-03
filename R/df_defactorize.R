@@ -1,9 +1,9 @@
 
 #' df_defactorize
 #'
-#' @param a data.frame like object 
+#' @param df a data.frame like object 
 #'
-#' @return
+#' @return returns the same data.frame except that factor columns have been tranformed into character columns
 #' @export
 #'
 #' @examples

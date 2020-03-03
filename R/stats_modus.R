@@ -1,4 +1,4 @@
-#' modus
+#' stats_modus
 #' 
 #' Function calculating the mode.
 #' 
@@ -8,10 +8,8 @@
 #' 
 #' @export
 #' 
-modus <- function(x, multimodal=FALSE, warn=TRUE) {
-  x_unique <- unique(x)
-  tab_x    <- tabulate(match(x, x_unique))
-  res      <- x_unique[which(tab_x==max(tab_x))]
+stats_modus <- function(x, multimodal=FALSE, warn=TRUE) {
+  res <- stats_modus_multi(x)
   if( identical(multimodal, TRUE) ){
     return(res)
   }else{
@@ -25,3 +23,6 @@ modus <- function(x, multimodal=FALSE, warn=TRUE) {
     }
   }
 }
+
+
+
