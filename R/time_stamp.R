@@ -1,8 +1,9 @@
 #' time_stamp
 #' 
-#' Generating file name ready iso timestamps.
+#' Generating file name ready iso time stamps.
 #' 
-#' @param ts one or many POSIX timestamp
+#' @param ts one or many POSIX time stamp
+#' @param sep separators to be used for formatting
 #'
 #' @export
 #'

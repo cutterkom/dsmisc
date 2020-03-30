@@ -7,10 +7,12 @@
 time_stamp(ts = Sys.time(), sep = c("-", "_", "_"))
 }
 \arguments{
-\item{ts}{one or many POSIX timestamp}
+\item{ts}{one or many POSIX time stamp}
+
+\item{sep}{separators to be used for formatting}
 }
 \description{
-Generating file name ready iso timestamps.
+Generating file name ready iso time stamps.
 }
 \examples{
 
