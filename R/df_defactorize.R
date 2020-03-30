@@ -3,7 +3,7 @@
 #'
 #' @param df a data.frame like object 
 #'
-#' @return returns the same data.frame except that factor columns have been tranformed into character columns
+#' @return returns the same data.frame except that factor columns have been transformed into character columns
 #' @export
 #'
 #' @examples

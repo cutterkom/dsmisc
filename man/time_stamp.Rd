@@ -4,13 +4,13 @@
 \alias{time_stamp}
 \title{time_stamp}
 \usage{
-time_stamp(ts = Sys.time())
+time_stamp(ts = Sys.time(), sep = c("-", "_", "_"))
 }
 \arguments{
 \item{ts}{one or many POSIX timestamp}
 }
 \description{
-time_stamp
+Generating file name ready iso timestamps.
 }
 \examples{
 

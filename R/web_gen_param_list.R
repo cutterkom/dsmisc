@@ -10,9 +10,9 @@
 #'
 #' @examples
 #' 
-#' web_gen_param_list_exapnd(q = "beluga", lang = c("de", "en"))
+#' web_gen_param_list_expand(q = "beluga", lang = c("de", "en"))
 #' 
-web_gen_param_list_exapnd <- 
+web_gen_param_list_expand <- 
   function(..., sep_1 = "=", sep_2 = "&"){
     
     # handling edge cases

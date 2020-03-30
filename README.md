@@ -24,11 +24,11 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 16, *lines of test code:* 24
+*lines of R code:* 82, *lines of test code:* 24
 
 **Version**
 
-0.2.0 ( 2020-01-09 21:14:00 )
+0.3.0 ( 2020-03-30 20:42:36 )
 
 **Description**
 
@@ -39,8 +39,7 @@ specificity but would be a waste to get lost nonetheless.
 
 **License**
 
-GPL (\>= 2) <br>Peter Meissner \[aut,
-cre\]
+GPL (\>= 2) <br>Peter Meissner \[aut, cre\]
 
 **Citation**
 
@@ -49,7 +48,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.2.0.
+Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.0.
 ```
 
 **BibTex for citing**
@@ -62,7 +61,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2020},
-      note = {R package version 0.2.0},
+      note = {R package version 0.3.0},
     }
 
 **Installation**
@@ -158,11 +157,32 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    1.44    0.02    1.45
+    ##    1.25    0.02    1.26
+
+### Stats Functions
+
+**Calculating the modus from a collection of values**
+
+``` r
+# one modus only 
+stats_modus(1:100)
+```
+
+    ## Warning in stats_modus(1:100): modus : multimodal but only one value returned (use warn=FALSE to turn this
+    ## off)
+
+    ## [1] 1
+
+``` r
+# all values if multiple modi are found
+stats_modus_multi(1:10)
+```
+
+    ##  [1]  1  2  3  4  5  6  7  8  9 10
 
 ### String Functions
 
-Stringr/stringi is cool but … can it do this?
+{stringr} / {stringi} packages are cool … but can they do this?
 
 **Extract specific RegEx groups**
 
@@ -190,3 +210,68 @@ str_group_extract(strings, "([\\w])_(\\d+)", 2)
 
     ##  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13" "14" "15" "16" "17" "18" "19" "20" "21"
     ## [22] "22" "23" "24" "25" "26"
+
+### Data.Frame Manipulation
+
+**Transform factor columns in a data.frame to character vectors**
+
+``` r
+df <- 
+  data.frame(
+    a = 1:2, 
+    b = factor(c("a", "b")), 
+    c = as.character(letters[3:4]), 
+    stringsAsFactors = FALSE
+  )
+vapply(df, class, "")
+```
+
+    ##           a           b           c 
+    ##   "integer"    "factor" "character"
+
+``` r
+df_df <- df_defactorize(df)
+vapply(df_df, class, "")
+```
+
+    ##           a           b           c 
+    ##   "integer" "character" "character"
+
+### Time Manipulation
+
+**File name ready time stamps**
+
+``` r
+# current time
+time_stamp()
+```
+
+    ## [1] "2020-03-30_22_48_18"
+
+``` r
+time_stamp(
+  ts  = as.POSIXct(c("2010-01-27 10:23:45", "2010-01-27 10:23:45")),
+  sep = c("","_","")
+)
+```
+
+    ## [1] "20100127_102345" "20100127_102345"
+
+``` r
+time_stamp(
+  ts  = as.POSIXct(c("2010-01-27 10:23:45", "2010-01-27 10:23:45")),
+  sep = c("")
+)
+```
+
+    ## [1] "20100127102345" "20100127102345"
+
+### Web Scraping
+
+**prepare multiple URLs via query parameter grid expansion**
+
+``` r
+web_gen_param_list_expand(id=1:3, lang=c("en", "de"))
+```
+
+    ## [1] "id=1&lang=en" "id=2&lang=en" "id=3&lang=en" "id=1&lang=de" "id=2&lang=de" "id=3&lang=de"
