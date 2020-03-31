@@ -23,4 +23,6 @@ Encoding: UTF-8
 SystemRequirements: C++11
 Suggests: 
     covr,
-    testthat
+    testthat,
+    spelling
+Language: en-US
