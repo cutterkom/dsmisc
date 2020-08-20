@@ -24,11 +24,11 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 82, *lines of test code:* 27
+*lines of R code:* 83, *lines of test code:* 27
 
 **Version**
 
-0.3.1 ( 2020-04-01 12:45:08 )
+0.3.2 ( 2020-09-01 18:02:30 )
 
 **Description**
 
@@ -43,7 +43,8 @@ names, or generate URL parameter lists by expanding value combinations.
 
 **License**
 
-GPL (\>= 2) <br>Peter Meissner \[aut, cre\]
+GPL (\>= 2) <br>Peter Meissner \[aut,
+cre\]
 
 **Citation**
 
@@ -52,7 +53,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.1.
+Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.2.
 ```
 
 **BibTex for citing**
@@ -65,7 +66,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2020},
-      note = {R package version 0.3.1},
+      note = {R package version 0.3.2},
     }
 
 **Installation**
@@ -161,7 +162,7 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    1.44    0.00    1.48
+    ##    2.35    0.00    2.34
 
 ### Stats Functions
 
@@ -169,24 +170,25 @@ system.time({
 
 ``` r
 # one modus only 
-stats_modus(1:100)
+stats_mode(1:10)
 ```
 
-    ## Warning in stats_modus(1:100): modus : multimodal but only one value returned (use warn=FALSE to turn this
-    ## off)
+    ## Warning in stats_mode(1:10): modus : multimodal but only one value returned (use warn=FALSE to turn this off)
 
     ## [1] 1
 
 ``` r
 # all values if multiple modi are found
-stats_modus_multi(1:10)
+stats_mode_multi(1:10)
 ```
 
     ##  [1]  1  2  3  4  5  6  7  8  9 10
 
 ### String Functions
 
-{stringr} / {stringi} packages are cool … but can they do this?
+{stringr} / {stringi} packages are cool … but can they do this (actually
+they can, of cause but with a little more work and cognitive load
+needed, e.g.: `stringr::str_match(strings, "([\\w])_(?:\\d+)")[, 2]`)?
 
 **Extract specific RegEx groups**
 
@@ -250,7 +252,7 @@ vapply(df_df, class, "")
 time_stamp()
 ```
 
-    ## [1] "2020-04-01_14_45_31"
+    ## [1] "2020-09-01_20_04_44"
 
 ``` r
 time_stamp(
@@ -272,7 +274,8 @@ time_stamp(
 
 ### Web Scraping
 
-**prepare multiple URLs via query parameter grid expansion**
+**prepare multiple URLs via query parameter grid
+    expansion**
 
 ``` r
 web_gen_param_list_expand(id=1:3, lang=c("en", "de"))

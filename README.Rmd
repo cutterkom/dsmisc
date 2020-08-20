@@ -242,10 +242,10 @@ system.time({
 
 ```{r}
 # one modus only 
-stats_modus(1:100)
+stats_mode(1:10)
 
 # all values if multiple modi are found
-stats_modus_multi(1:10)
+stats_mode_multi(1:10)
 ```
 
 
@@ -253,7 +253,7 @@ stats_modus_multi(1:10)
 
 ### String Functions
 
-{stringr} / {stringi} packages are cool ... but can they do this? 
+{stringr} / {stringi} packages are cool ... but can they do this (actually they can, of cause but with a little more work and cognitive load needed, e.g.: `stringr::str_match(strings, "([\\w])_(?:\\d+)")[, 2]`)? 
 
 
 **Extract specific RegEx groups**
