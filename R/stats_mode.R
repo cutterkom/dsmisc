@@ -11,7 +11,7 @@
 #' @export
 #' 
 stats_mode <- function(x, multimodal=FALSE, warn=TRUE) {
-  res <- stats_modus_multi(x)
+  res <- stats_mode_multi(x)
   if( identical(multimodal, TRUE) ){
     return(res)
   }else{
