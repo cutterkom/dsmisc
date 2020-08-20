@@ -2,7 +2,7 @@
 % Please edit documentation in R/web_gen_param_list.R
 \name{web_gen_param_list_expand}
 \alias{web_gen_param_list_expand}
-\title{web_gen_param_list_exapnd}
+\title{URL Parameter Combinations}
 \usage{
 web_gen_param_list_expand(..., sep_1 = "=", sep_2 = "&")
 }
@@ -13,8 +13,11 @@ web_gen_param_list_expand(..., sep_1 = "=", sep_2 = "&")
 
 \item{sep_2}{second separator to use between key-value pairs}
 }
+\value{
+string vector with assambled query string parameter combinations
+}
 \description{
-Generate an url parameter combination from sets of parameter values.
+Generate URL parameter combinations from sets of parameter values.
 }
 \examples{
 

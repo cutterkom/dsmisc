@@ -2,8 +2,8 @@
 
 export(df_defactorize)
 export(graphs_find_subgraphs)
-export(stats_modus)
-export(stats_modus_multi)
+export(stats_mode)
+export(stats_mode_multi)
 export(str_group_extract)
 export(time_stamp)
 export(web_gen_param_list_expand)

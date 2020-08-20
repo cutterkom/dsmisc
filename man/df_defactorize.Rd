@@ -10,7 +10,8 @@ df_defactorize(df)
 \item{df}{a data.frame like object}
 }
 \value{
-returns the same data.frame except that factor columns have been transformed into character columns
+returns the same data.frame except that factor columns have been transformed into 
+        character columns
 }
 \description{
 df_defactorize

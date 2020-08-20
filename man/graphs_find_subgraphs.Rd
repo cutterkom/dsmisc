@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{graphs_find_subgraphs}
 \alias{graphs_find_subgraphs}
-\title{Finding and indexing subgraphs in undirected graph}
+\title{Subgraphs in Undirected Graphs/Networks}
 \usage{
 graphs_find_subgraphs(id_1, id_2, verbose = 1L)
 }

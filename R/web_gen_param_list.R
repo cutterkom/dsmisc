@@ -1,10 +1,12 @@
-#' web_gen_param_list_exapnd
+#' URL Parameter Combinations
 #' 
-#' Generate an url parameter combination from sets of parameter values.
+#' Generate URL parameter combinations from sets of parameter values.
 #'
 #' @param ... multiple vectors passed on as named arguments or a single list or a data.frame 
 #' @param sep_1 first separator to use between key and value 
 #' @param sep_2 second separator to use between key-value pairs
+#'
+#' @return string vector with assambled query string parameter combinations
 #'
 #' @export
 #'

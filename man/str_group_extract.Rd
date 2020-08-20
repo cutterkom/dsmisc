@@ -2,7 +2,7 @@
 % Please edit documentation in R/str_group_extract.R
 \name{str_group_extract}
 \alias{str_group_extract}
-\title{str_group_extract}
+\title{Extract Regular Expression Groups}
 \usage{
 str_group_extract(string, pattern, group = NULL, nas = TRUE)
 }
@@ -15,8 +15,11 @@ str_group_extract(string, pattern, group = NULL, nas = TRUE)
 
 \item{nas}{return NA values (TRUE) or filter them out (FALSE)}
 }
+\value{
+string vector or string matrix
+}
 \description{
-str_group_extract
+Extract Regular Expression Groups
 }
 \examples{
 

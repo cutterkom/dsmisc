@@ -1,4 +1,4 @@
-#' stats_modus
+#' Mode
 #' 
 #' Function calculating the mode.
 #' 
@@ -6,9 +6,11 @@
 #' @param multimodal wether or not all modes should be returned in case of more than one
 #' @param warn should the function warn about multimodal outcomes?
 #' 
+#' @return vector of mode or modes
+#' 
 #' @export
 #' 
-stats_modus <- function(x, multimodal=FALSE, warn=TRUE) {
+stats_mode <- function(x, multimodal=FALSE, warn=TRUE) {
   res <- stats_modus_multi(x)
   if( identical(multimodal, TRUE) ){
     return(res)

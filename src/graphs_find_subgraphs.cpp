@@ -21,7 +21,7 @@ struct Node {
 
 
 
-//' Finding and indexing subgraphs in undirected graph 
+//' Subgraphs in Undirected Graphs/Networks
 //' 
 //' Finding and indexing subgraphs in undirected graph.
 //' 

@@ -1,9 +1,11 @@
-#' str_group_extract
+#' Extract Regular Expression Groups
 #'
 #' @param string string to extract from
 #' @param pattern pattern with groups to match
 #' @param group groups to extract
 #' @param nas return NA values (TRUE) or filter them out (FALSE)
+#'
+#' @return string vector or string matrix
 #'
 #' @export
 #'
