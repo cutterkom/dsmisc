@@ -14,7 +14,7 @@ web_gen_param_list_expand(..., sep_1 = "=", sep_2 = "&")
 \item{sep_2}{second separator to use between key-value pairs}
 }
 \value{
-string vector with assambled query string parameter combinations
+string vector with assembled query string parameter combinations
 }
 \description{
 Generate URL parameter combinations from sets of parameter values.

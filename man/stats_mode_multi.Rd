@@ -13,5 +13,5 @@ stats_mode_multi(x)
 vector with all modes
 }
 \description{
-Function calculating the mode, allowing for multiple modes in case of equal freuquencies.
+Function calculating the mode, allowing for multiple modes in case of equal frequencies.
 }

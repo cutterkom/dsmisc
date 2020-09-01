@@ -28,7 +28,7 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 
 **Version**
 
-0.3.2 ( 2020-09-01 18:02:30 )
+0.3.2 ( 2020-09-01 18:10:38 )
 
 **Description**
 
@@ -162,7 +162,7 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    2.35    0.00    2.34
+    ##    2.35    0.01    2.35
 
 ### Stats Functions
 
@@ -252,7 +252,7 @@ vapply(df_df, class, "")
 time_stamp()
 ```
 
-    ## [1] "2020-09-01_20_04_44"
+    ## [1] "2020-09-01_20_10_50"
 
 ``` r
 time_stamp(

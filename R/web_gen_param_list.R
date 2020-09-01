@@ -6,7 +6,7 @@
 #' @param sep_1 first separator to use between key and value 
 #' @param sep_2 second separator to use between key-value pairs
 #'
-#' @return string vector with assambled query string parameter combinations
+#' @return string vector with assembled query string parameter combinations
 #'
 #' @export
 #'

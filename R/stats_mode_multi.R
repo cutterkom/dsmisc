@@ -1,6 +1,6 @@
 #' Mode Allowing for Multi Modal Mode
 #'
-#' Function calculating the mode, allowing for multiple modes in case of equal freuquencies. 
+#' Function calculating the mode, allowing for multiple modes in case of equal frequencies. 
 #' 
 #'
 #' @inheritParams stats_mode
