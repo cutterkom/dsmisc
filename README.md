@@ -28,7 +28,7 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 
 **Version**
 
-0.3.2 ( 2020-09-01 18:10:38 )
+0.3.3 ( 2020-09-11 18:11:12 )
 
 **Description**
 
@@ -36,15 +36,14 @@ Tool collection for common and not so common data science use cases.
 This includes custom made algorithms for data management as well as
 value calculations that are hard to find elsewhere because of their
 specificity but would be a waste to get lost nonetheless. Currently
-available functionality: find sub-graphs in an edgelist data.frame, find
-mode or modes in a vector of values, extract (a) specific regular
+available functionality: find sub-graphs in an edge list data.frame,
+find mode or modes in a vector of values, extract (a) specific regular
 expression group(s), generate ISO time stamps that play well with file
 names, or generate URL parameter lists by expanding value combinations.
 
 **License**
 
-GPL (\>= 2) <br>Peter Meissner \[aut,
-cre\]
+GPL (\>= 2) <br>Peter Meissner \[aut, cre\]
 
 **Citation**
 
@@ -53,7 +52,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.2.
+Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.3.
 ```
 
 **BibTex for citing**
@@ -66,7 +65,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2020},
-      note = {R package version 0.3.2},
+      note = {R package version 0.3.3},
     }
 
 **Installation**
@@ -162,7 +161,7 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    2.35    0.01    2.35
+    ##    2.96    0.01    3.02
 
 ### Stats Functions
 
@@ -252,7 +251,7 @@ vapply(df_df, class, "")
 time_stamp()
 ```
 
-    ## [1] "2020-09-01_20_10_50"
+    ## [1] "2020-09-11_20_11_33"
 
 ``` r
 time_stamp(
@@ -274,8 +273,7 @@ time_stamp(
 
 ### Web Scraping
 
-**prepare multiple URLs via query parameter grid
-    expansion**
+**prepare multiple URLs via query parameter grid expansion**
 
 ``` r
 web_gen_param_list_expand(id=1:3, lang=c("en", "de"))

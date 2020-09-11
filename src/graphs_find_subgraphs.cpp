@@ -2,7 +2,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-#include <bits/stdc++.h>
 #include <vector>
 #include <set>
 using namespace std;
