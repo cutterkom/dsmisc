@@ -1,45 +1,30 @@
-This is a resubmission. 
+This is a fixed version adressing problems on non-g++ build systems.
 
 
 ## Your comments
 
-> Thanks,
+> Dear maintainer,
 > 
-> Please add \value to all .Rd files for exported functions and explain
-> the functions results in the documentation.
-> f.i.: time_stamp.Rd
-> If a function does not return a value, please document that too, e.g.
-> \value{None}.
+> Please see the problems shown on
+> <https://cran.r-project.org/web/checks/check_results_dsmisc.html>.
 > 
-> The \description tag in the .Rd files should be one or two sentences on
-> how the function works and what it's good for. Don't just repeat the
-> function name.
-> F.i.: stats_modus_multi.Rd
+> Please correct before 2020-09-23 to safely retain your package on CRAN.
 > 
-> An .Rd file title should:
-> - be capitalized
-> - not end in a period
-> - be at most 65 characters long
-> - exist and stand alone (there must be exactly one title)
-> Please adjust to these standards and again don't simply repeat the name.
-> https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Documenting-functions
-> F.i.: stats_modus_multi.Rd
-> 
-> Please fix and resubmit, and document what was changed in the submission
-> comments.
+> The CRAN Team
+
 
 
 
 ## My actions
 
-- added titles according to suggestions
-- added value entries according to suggestions
+- removed #include <bits/stdc++.h> as suggested 
 
 
 
 ## Test environments
 
-* Ubuntu 16.04 (on travis-ci), R old, release, devel
+* Ubuntu 16.04 (on travis-ci), R old, release, devel, 3.4.2
+* MacOs (on travis-ci), R old, release, devel, 3.4.2
 * Win-builder (devel and release)
 * local Win10 R 3.6.3
 
@@ -48,4 +33,7 @@ This is a resubmission.
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Peter Meissner <retep.meissner@gmail.com>'
+
+Days since last update: 2
