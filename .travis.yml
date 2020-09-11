@@ -1,11 +1,17 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
+
 r:
   - oldrel
   - release
   - devel
   - 3.4.2
+  
+os:
+  - linux
+  - macos
+  - windows
 
 r_packages:
   - covr
