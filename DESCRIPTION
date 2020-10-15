@@ -30,3 +30,5 @@ Suggests:
     testthat,
     spelling
 Language: en-US
+BugReports: https://github.com/petermeissner/dsmisc/issues
+URL: https://github.com/petermeissner/dsmisc
