@@ -24,11 +24,18 @@ status](https://ci.appveyor.com/api/projects/status/github/petermeissner/dsmisc?
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/dsmisc">
 <img src="http://cranlogs.r-pkg.org/badges/dsmisc">
 
-*lines of R code:* 83, *lines of test code:* 27
+*lines of R code:* 90, *lines of test code:* 27
 
 **Version**
 
-0.3.3 ( 2020-09-11 18:11:12 )
+0.4.0 ( 2020-10-15 11:30:17 )
+
+**Note**
+
+If you find any of the package’s functionality useful and have a package
+that is dedicated to a particular set of problems where you think one or
+two of the functions would find a more suitable home - please feel free
+to start a conversation via opening an github issue.
 
 **Description**
 
@@ -52,7 +59,7 @@ citation("dsmisc")
 ```
 
 ``` r
-Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.3.3.
+Meissner P (2020). dsmisc: Data Science Box of Pandora Miscellaneous. R package version 0.4.0.
 ```
 
 **BibTex for citing**
@@ -65,7 +72,7 @@ toBibtex(citation("dsmisc"))
       title = {dsmisc: Data Science Box of Pandora Miscellaneous},
       author = {Peter Meissner},
       year = {2020},
-      note = {R package version 0.3.3},
+      note = {R package version 0.4.0},
     }
 
 **Installation**
@@ -161,7 +168,7 @@ system.time({
 ```
 
     ##    user  system elapsed 
-    ##    2.96    0.01    3.02
+    ##    2.71    0.02    2.81
 
 ### Stats Functions
 
@@ -251,7 +258,7 @@ vapply(df_df, class, "")
 time_stamp()
 ```
 
-    ## [1] "2020-09-11_20_11_33"
+    ## [1] "2020-10-15_13_35_53"
 
 ``` r
 time_stamp(
@@ -280,3 +287,18 @@ web_gen_param_list_expand(id=1:3, lang=c("en", "de"))
 ```
 
     ## [1] "id=1&lang=en" "id=2&lang=en" "id=3&lang=en" "id=1&lang=de" "id=2&lang=de" "id=3&lang=de"
+
+### Tools
+
+``` r
+tool_i_fit_index(i = -13:13, index = 7)
+```
+
+    ##  [1] 1 2 3 4 5 6 7 1 2 3 4 5 6 7 1 2 3 4 5 6 7 1 2 3 4 5 6
+
+``` r
+tool_i_fit_obj(i = -13:13, obj = letters)
+```
+
+    ##  [1] "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
+    ## [27] "m"
